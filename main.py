@@ -18,7 +18,14 @@ canvas.create_image(100,100,image=img)
 Label(text="Website: ").grid(row=1,column=0)
 Label(text="Username/password: ").grid(row=2,column=0)
 Label(text="Password: ").grid(row=3,column=0)
-
-
-
+# entry
+web_name = Entry(width=44)
+web_name.grid(row=1,column=1,columnspan=2,pady=20)
+user_name = Entry(width=44)
+user_name.grid(row=2,column=1,columnspan=2,pady=20)
+password = Entry(width=20)
+password.grid(row=3,column=1,padx=(0,10),pady=20)
+# buttons
+Button(text="Generate password",width=16).grid(row=3,column=2,padx=(10,0))
+Button(text="Add",width=38).grid(row=4,column=1,columnspan=2,pady=20)
 main_window.mainloop()
