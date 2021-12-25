@@ -3,6 +3,17 @@ import tkinter
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+def add_fun():
+    temp_web=web_name.get()    
+    temp_user=user_name.get()    
+    temp_pass = password.get() 
+    if temp_user =="" or temp_pass==""or temp_web=="":
+        print("all field are required *")
+    else:
+        line = f"{temp_web}|{temp_user}|{temp_pass}\n"
+        with open('sign_in_password.txt',mode="a") as file:
+            file.write(line)
+    
 
 # ---------------------------- UI SETUP ------------------------------- #
 # main screen
@@ -29,5 +40,5 @@ password = Entry(width=22)
 password.grid(row=3,column=1,padx=(0,10),pady=5)
 # buttons
 Button(text="Generate password").grid(row=3,column=2,padx=(10,0))
-Button(text="Add",width=37).grid(row=4,column=1,columnspan=2,pady=5)
+Button(text="Add",width=37,command=add_fun).grid(row=4,column=1,columnspan=2,pady=5)
 main_window.mainloop()
