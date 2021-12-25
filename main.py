@@ -21,8 +21,10 @@ Label(text="Password: ").grid(row=3,column=0)
 # entry
 web_name = Entry(width=44)
 web_name.grid(row=1,column=1,columnspan=2,pady=5)
+web_name.focus()
 user_name = Entry(width=44)
 user_name.grid(row=2,column=1,columnspan=2,pady=5)
+user_name.insert(0,"example123@gmail.com")
 password = Entry(width=22)
 password.grid(row=3,column=1,padx=(0,10),pady=5)
 # buttons
