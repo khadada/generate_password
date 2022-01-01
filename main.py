@@ -11,8 +11,12 @@ def add_fun():
         print("all field are required *")
     else:
         line = f"{temp_web}|{temp_user}|{temp_pass}\n"
-        with open('sign_in_password.txt',mode="a") as file:
+        with open('saved_password.txt',mode="a") as file:
             file.write(line)
+        web_name.delete(0,END)
+        user_name.delete(0,END)
+        password.delete(0,END)
+        web_name.focus()
     
 
 # ---------------------------- UI SETUP ------------------------------- #
