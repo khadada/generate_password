@@ -1,5 +1,5 @@
 from tkinter import *
-import tkinter
+from tkinter import messagebox
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
@@ -10,13 +10,15 @@ def add_fun():
     if temp_user =="" or temp_pass==""or temp_web=="":
         print("all field are required *")
     else:
-        line = f"{temp_web}|{temp_user}|{temp_pass}\n"
-        with open('saved_password.txt',mode="a") as file:
-            file.write(line)
-        web_name.delete(0,END)
-        user_name.delete(0,END)
-        password.delete(0,END)
-        web_name.focus()
+        is_ok = messagebox.askokcancel(title=f'{temp_web}',message=f"The info will saved is: \nEmail:[{temp_user}]\nPassword[{temp_pass}]")
+        if is_ok:
+            line = f"{temp_web} | {temp_user} | {temp_pass}\n"
+            with open('saved_password.txt',mode="a") as file:
+                file.write(line)
+            web_name.delete(0,END)
+            user_name.delete(0,END)
+            password.delete(0,END)
+            web_name.focus()
     
 
 # ---------------------------- UI SETUP ------------------------------- #
