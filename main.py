@@ -8,7 +8,7 @@ def add_fun():
     temp_user=user_name.get()    
     temp_pass = password.get() 
     if temp_user =="" or temp_pass==""or temp_web=="":
-        print("all field are required *")
+        messagebox.showerror("Error","All field are required ")
     else:
         is_ok = messagebox.askokcancel(title=f'{temp_web}',message=f"The info will saved is: \nEmail:[{temp_user}]\nPassword[{temp_pass}]")
         if is_ok:
