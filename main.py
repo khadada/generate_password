@@ -3,25 +3,29 @@ from tkinter import messagebox
 from random import randint, shuffle, choice
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 #Password Generator Project
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+def generate_password():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-randint(2, 4)
-letter_password = [choice(letters) for _ in range(randint(8, 10))]
-symbole_password = [choice(symbols) for _ in range(randint(2, 4))]
-number_password = [choice(numbers) for _ in range(randint(2, 4))]
-password_list = letter_password+symbole_password+number_password
-shuffle(password_list)
+    randint(2, 4)
+    letter_password = [choice(letters) for _ in range(randint(8, 10))]
+    symbole_password = [choice(symbols) for _ in range(randint(2, 4))]
+    number_password = [choice(numbers) for _ in range(randint(2, 4))]
+    password_list = letter_password+symbole_password+number_password
+    shuffle(password_list)
+    password = "".join(password_list)
+    password_entry.delete(0,END)
+    password_entry.insert(0,password)
+    
+    
 
-password = "".join(password_list)
-
-print(f"Your password is: {password}")
+    #print(f"Your password is: {password}")
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def add_fun():
     temp_web=web_name.get()    
     temp_user=user_name.get()    
-    temp_pass = password.get() 
+    temp_pass = password_entry.get() 
     if temp_user =="" or temp_pass==""or temp_web=="":
         messagebox.showerror("Error","All field are required ")
     else:
@@ -32,7 +36,7 @@ def add_fun():
                 file.write(line)
             web_name.delete(0,END)
             user_name.delete(0,END)
-            password.delete(0,END)
+            password_entry.delete(0,END)
             web_name.focus()
     
 
@@ -57,9 +61,9 @@ web_name.focus()
 user_name = Entry(width=44)
 user_name.grid(row=2,column=1,columnspan=2,pady=5)
 user_name.insert(0,"example123@gmail.com")
-password = Entry(width=22)
-password.grid(row=3,column=1,padx=(0,10),pady=5)
+password_entry = Entry(width=22)
+password_entry.grid(row=3,column=1,padx=(0,10),pady=5)
 # buttons
-Button(text="Generate password").grid(row=3,column=2,padx=(10,0))
+Button(text="Generate password",command=generate_password).grid(row=3,column=2,padx=(10,0))
 Button(text="Add",width=37,command=add_fun).grid(row=4,column=1,columnspan=2,pady=5)
 main_window.mainloop()
